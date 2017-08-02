@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(http://fonts.gstatic.com/s/ubuntu/v6/sDGTilo5QRsfWu6Yc11AXg.woff2) format('woff2'), url(http://fonts.gstatic.com/s/ubuntu/v6/_xyN3apAT_yRRDeqB3sPRg.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed Regular'), local('RobotoCondensed-Regular'), url(http://fonts.gstatic.com/s/robotocondensed/v10/Zd2E9abXLFGSr9G3YK2MsDAdhzWOYhqHvOZMRGaEyPo.woff2) format('woff2'), url(http://fonts.gstatic.com/s/robotocondensed/v10/Zd2E9abXLFGSr9G3YK2MsFzqCfRpIA3W6ypxnPISCPA.woff) format('woff');
+}
+@font-face {
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	font-style: normal;
+	font-weight: 400;
+	
+}
+@font-face {
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+html,
+body {
+	margin:0px;
+	padding:0px;
+	height:100%;
+	color:black;
+	min-width:500px;
+	background:white;
+	font-family: 'Ubuntu', sans-serif;
+}
+#wrapper {
+	width:90%;
+	height:100%;
+	min-width:544px;
+	max-width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+}
+#header {
+	font-family: 'Copperplate Gothic Light';
+	font-size:60px;
+	font-weight:normal;
+	height:12%;
+	/*min-height:120px;*/
+	background-color:white;
+	color:white;
+	text-align:left;
+	/*vertical-align:middle;*/
+	/*min-width:700px;*/
+}
+#navigation {
+	width:100%;
+	height:4%;
+	min-height:35px;
+	padding-top:0px;
+	background-color:darkred;
+	font-weight:bold;
+}
+#content {
+	min-height:84%;
+	/*min-height:805px;*/
+	background-color:white;
+	color:black;
+	position:bottom;/*justify;relative;*/
+	margin-left:auto;
+	margin-right:auto;
+	/*min-width:200px;*/
+	/*max-width:980px;*/
+	line-height: 1.8;
+}
+ul#bar {
+  list-style:none;
+  margin:0px;
+  padding:0;
+  width:545px
+}
+ul#bar li {
+  display:inline
+}
+ul#bar li a {
+  text-decoration:none;
+  font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
+  padding:8px 0;
+  width:135px;
+  background:#8C0000;
+  color:#eee;
+  float:left;
+  text-align:center;
+  border-right:1px solid #fff;
+}
+ul#bar li a:hover {
+  background:#FFFFFF;
+  color:#000
+}
+.button {
+	cursor:pointer;
+	color:white;
+	font-weight:bold;
+	font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
+	padding: 8px 13px;
+	background:url(overlay.png) repeat-x center #8C0000;
+	background-color:rgba(178,34,34,1);
+	border:1px solid #B22222;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border-bottom:1px solid #300400;
+	-moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+	-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+	box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.button:hover {
+	background-color:rgba(178,34,34,0.8);
+}
+.button:active {
+	position:relative;top:2px;
+}
+.weight1 {
+	 /*font-family: 'Alegreya Sans SC', sans-serif;*/
+	 /*font-family: 'Marcellus SC', serif;*/
+	 font-family: Copperplate, 'Copperplate Gothic Light', sans-serif;
+	 font-weight: 400;
+	 font-style: normal;
+	 font-size: 36px;
+}
