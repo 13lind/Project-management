@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.centre-console {
+    margin-left: 170px;
+    padding: 1em;
+    overflow: hidden;
+}
+.left-nav{
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+    color:green;
+}
