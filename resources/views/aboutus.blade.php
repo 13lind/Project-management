@@ -1,7 +1,6 @@
 <html>
   <header>
-    <title>
-    </title>
+    <title>The Car Share</title>
   </header>
   <body>
     <h2>Who are we?</h2>
