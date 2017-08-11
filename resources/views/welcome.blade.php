@@ -22,7 +22,7 @@
 
         <div class="flex-center position-ref full-height">
 
-            <h1>{{'The Car Share'}}</h1>
+            
 
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -36,12 +36,14 @@
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
 
-                    <a href="{{ url('/about') }}">About</a>
+                    <a href="{{ url('/aboutus') }}">About</a>
                     <a href="{{ url('/contact') }}">Contact</a>
                 </div>
             @endif
 
             
         </div>
+        
     </body>
+    
 </html>
