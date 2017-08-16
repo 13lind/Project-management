@@ -1,3 +1,18 @@
+
+@include('layouts.navbar')
+
+
+
+
+<html>
+
+<link rel="stylesheet" href=".css">
+
+	<body style="background-color: #f5f8fa">
+		@yield('content')
+	
+
+
 <div class=“Profile“>
 
  
@@ -12,12 +27,17 @@
 
 <h1>Car chosen: </h1>
 
-<h1>Dates</h1>
+<h1>Dates being borrowed:</h1>
  
 
     
-<p><button>Contact</button></p>
 
   </div>
 
 </div>
+</body>
+
+</html>
+
+
+
