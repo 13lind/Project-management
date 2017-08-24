@@ -28,3 +28,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/findcar', 'FindCarController@index');
+Route::get('/payment', 'PaymentController@index');
+Route::post('/payment', 'PaymentController@store');
+
+

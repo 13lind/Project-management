@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 @include('layouts.navbar')
 @include('layouts.sidebar')
 <html>
