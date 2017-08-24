@@ -19,16 +19,16 @@ Route::get('/aboutus', function () {
     return view('aboutus');
 });
 
+Route::get('/contactus', function () {
+    return view('contactus');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
 Route::get('/findcar', 'FindCarController@index');
 Route::get('/payment', 'PaymentController@index');
-Route::get('/payment/view', 'PaymentController@getID');
-
-
 Route::post('/payment', 'PaymentController@store');
+
+
