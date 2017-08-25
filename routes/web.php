@@ -19,8 +19,8 @@ Route::get('/aboutus', function () {
     return view('aboutus');
 });
 
-Route::get('/contactus', function () {
-    return view('contactus');
+Route::get('/contact', function () {
+    return view('contact');
 });
 
 Auth::routes();
