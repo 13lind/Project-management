@@ -5,9 +5,10 @@
 <div>
     <nav class = "left-nav">
         <ul style="list-style: none;">
+            <li><h2><a href="/admin">Admin Menu</a></h2></li>
             <li><h2><a href="/findcar">Find a Car</a></h2></li>
             <li><h2><a href="/triphistory">Trip History</a></h2></li>
-            <li><h2><a href="/profile">Profile</a></h2></li>
+            <li><h2><a href="/home">Profile</a></h2></li>
             <li><h2><a href="/payment">Payment</a></h2></li>
             <li><h2><a href="{{ route('logout') }}"
                 onclick="event.preventDefault();

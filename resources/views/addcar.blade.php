@@ -3,7 +3,7 @@
 
 <h2>Add Car</h2>
 
-<form method="POST" action="">
+<form method="POST" action="/admin">
 		   
 
 
@@ -66,7 +66,7 @@
 		<label>Suburb</label>
 
 		<div>
-			<input id="surburb" type="text" name="surburb" placeholder="Melbourne" 
+			<input id="suburb" type="text" name="suburb" placeholder="Melbourne" 
 			 required autofocus>
 		</div>
 	</div>		

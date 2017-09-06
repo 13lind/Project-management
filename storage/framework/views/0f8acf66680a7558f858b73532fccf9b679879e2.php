@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<style>
-
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-.bg {
-    height: 100%; 
-	background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-</style>
 
 <html>
-	<body>
+  <head>
+    <style>
+      #map {
+        height: 100%;
+      }
 
-	<div id="googleMap" class="bg"></div>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
 
-	<script>
-	function myMap() {
-	var mapProp= {
-	    center:new google.maps.LatLng(-37.815018,144.946014),
-	    zoom:12,
-	};
-	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-	}
-	</script>
+  <body>
 
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvsxxIPeWUltcyoYBVnjzIY9xOYDAEiTQ&callback=myMap"></script>
+    <div id="map"></div>
 
-	</body>
+    <script>     
+     
+    function initMap() {
+      var melbourne = {lat: -37.8136, lng: 144.9631};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: melbourne
+      });
+
+      var marker = new google.maps.Marker({
+      position: melbourne,
+      map: map,
+      title: 'Test Marker'
+      });
+    }
+
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvsxxIPeWUltcyoYBVnjzIY9xOYDAEiTQ&callback=initMap">
+    </script>
+
+  </body>
 </html>
