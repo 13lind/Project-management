@@ -1,6 +1,7 @@
+@extends('layout')
 
-@include('layouts.navbar')
 
+@section('content')
 
 
 
@@ -69,7 +70,7 @@ Type of Car chosen:
 <th>Dates being borrowed:</th>
 <td><input type=“text” name=“dates”></td><br>
  
-<input type=“submit” value=“submit”>
+<button>Submit</button>
 
 </form>
     
@@ -83,3 +84,4 @@ Type of Car chosen:
 
 
 
+@endsection

@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 
-<link rel="stylesheet" href="addcar.css">
+<link rel="stylesheet" href="{{ asset('css/addcar.css') }}">
 <body>
 <div class="video-background">
     <div class="video-foreground">
