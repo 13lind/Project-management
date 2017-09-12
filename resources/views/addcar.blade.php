@@ -1,13 +1,9 @@
 @extends('layout')
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('css/addcar.css') }}">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <body>
-<div class="video-background">
-    <div class="video-foreground">
-		<iframe width="854" height="480" src="https://www.youtube.com/embed/5_VR31lrtl8?&amp;rel=0&amp;controls=0&amp;showinfo=0;loop=1&amp;autoplay=1&amp" frameborder="0" allowfullscreen></iframe>
-    </div>
-</div>
+
 
 <div class="container">
 <form method="POST" action="">

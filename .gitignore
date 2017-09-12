@@ -1,2 +1,5 @@
 
 *.log
+*.log
+vendor/composer/LICENSE
+vendor/composer/LICENSE
