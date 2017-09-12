@@ -23,7 +23,7 @@ class CreateCarInfoTable extends Migration
             $table->string('cost_per_day');
             $table->boolean('avaliable');
             
-            $table->rememberToken();
+            
             $table->timestamps();
         });
     }

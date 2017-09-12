@@ -4,10 +4,7 @@
 @section('content')
 
 
-
-<html>
-
-<link rel="stylesheet" href=".css">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 
 	<body style="background-color: #f5f8fa">
 		@yield('content')
@@ -15,64 +12,39 @@
 
 
 <div class="container">
-<form>
+	<form>
 
- <div style="background-color:lightblue;color:white;padding:2px;">
+	 <div>
 
-<h2>Personal Details</h2>
+	<h2>Personal Details</h2>
 
-</div>
-
-
-<br><br>
-
-First Name:
-<input type=“text” name=“firstname”>
+	</div>
 
 
-<br>
-<br>
 
-Last Name:
-<input type=“text” name=“lastname”>
+	<label> First Name: </label>
+	<input type=“text” name=“firstname”>
 
-<br>
-<br>
 
-Email:
-<input type=“text” name=“email”>
+	<label> Last Name: </label>
+	<input type=“text” name=“lastname”>
 
-<br>
-<br>
 
-Mobile Phone:
-<input type=“text” name=“mobile” value=0412648263>
 
-<br>
-<br>
-————————————————————————
-<br>
-<br>
+	<label>Email:</label>
+	<input type=“text” name=“email”>
 
-<div style="background-color:lightblue;color:white;padding:2px;">
 
-<h2>Car Details</h2>
 
-</div>
+	<label>Mobile Phone:</label>
+	<input type=“text” name=“mobile”>
 
-<br><br>
 
-Type of Car chosen: 
-<input type=“text” name=“carname”><br>
 
-<br>
 
-<th>Dates being borrowed:</th>
-<td><input type=“text” name=“dates”></td><br>
- 
-<button>Submit</button>
+	<button>Update Details</button>
 
-</form>
+	</form>
     
 
   
@@ -80,7 +52,6 @@ Type of Car chosen:
 </div>
 </body>
 
-</html>
 
 
 
