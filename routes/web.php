@@ -27,9 +27,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/findcar', 'FindCarController@index');
+Route::get('/findcar', 'CarController@index');
 Route::get('/payment', 'PaymentController@index');
 Route::post('/payment', 'PaymentController@store');
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@store');
+Route::post('/findcar', 'CarController@book');
 
