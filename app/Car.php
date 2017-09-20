@@ -9,7 +9,7 @@ class Car extends Model
 
     public $table = "car_info";
     protected $fillable = [
-        'make', 'model', 'rego_number', 'car_location', 'cost_per_hour',
+        'make', 'model', 'rego_number', 'car_location', 'cost_per_hour', 'lat', 'long',
         'cost_per_day', 'avaliable'
     ];
 

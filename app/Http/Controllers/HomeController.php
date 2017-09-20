@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,35 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public static function getUserID()
+    {
+        $user = Auth::user();
+        return $user->id;
+        
+    }
+
+
+    public static function getUserFirstName()
+    {
+        $user = Auth::user();
+        return $user->first_name;
+        
+    }
+
+    public static function getUserLastName()
+    {
+        $user = Auth::user();
+        return $user->last_name;
+        
+    }
+
+    public static function getUserEmail()
+    {
+        $user = Auth::user();
+        return $user->email;
+        
     }
 
 }
