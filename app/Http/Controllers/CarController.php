@@ -73,6 +73,21 @@ class CarController extends Controller
 		$result = $result->toArray();
     	return $result;
 	}
+
+	public static function getLat()
+    {
+    	$result = DB::table('car_info')->pluck('lat');
+		$result = $result->toArray();
+    	return $result;
+	}	
+
+	public static function getLng()
+    {
+    	$result = DB::table('car_info')->pluck('long');
+		$result = $result->toArray();
+    	return $result;
+	}	
+
 	public static function getCarCostHour()
     {
     	$result = DB::table('car_info')->pluck('cost_per_hour');

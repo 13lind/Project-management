@@ -1,20 +1,20 @@
-<link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 
 @if (Auth::guest())
 @else
 <div>
-    <nav class = "left-nav">
-        <ul style="list-style: none;">
-            <li><h2><a href="/admin">Admin Menu</a></h2></li>
-            <li><h2><a href="/findcar">Find a Car</a></h2></li>
-            <li><h2><a href="/triphistory">Trip History</a></h2></li>
-            <li><h2><a href="/home">Profile</a></h2></li>
-            <li><h2><a href="/payment">Payment</a></h2></li>
-            <li><h2><a href="{{ route('logout') }}"
+       <nav class = "left-nav">
+            <a href="/admin">Admin Menu</a>
+            <a href="/findcar">Find a Car</a>
+            <a href="/triphistory">Trip History</a>
+            <a href="/home">Profile</a>
+            <a href="/payment">Payment</a>    
+            <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">Logout</a></h2></li>
+                document.getElementById('logout-form').submit();">Logout</a>
 
         </ul>
     </nav>
 </div>
 @endif
+

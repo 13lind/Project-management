@@ -12,6 +12,8 @@
   $model = CarController::getCarModel();
   $rego_number = CarController::getCarRego();
   $location = CarController::getCarLocation();
+  $lats = CarController::getLat();
+  $lngs = CarController::getLng();
   $cost_per_hour = CarController::getCarCostHour();
   $cost_per_day = CarController::getCarCostDay();
   $avaliable = CarController::getCarAvaliability();
@@ -55,6 +57,8 @@
 
       //Convert PHP arrays to Javascript
       var locations = <?php echo json_encode($location); ?>;
+      var lats = <?php echo json_encode($lats); ?>;
+      var lngs = <?php echo json_encode($lngs); ?>;
       var makes = <?php echo json_encode($make); ?>;
       var models = <?php echo json_encode($model); ?>;
       var rego_numbers = <?php echo json_encode($rego_number); ?>;
@@ -91,15 +95,17 @@
         var total_cars = <?php echo json_encode($totalCarCount); ?>;
         for (var i = 0; i < total_cars; i++) {
 
-          var location = locations[i];
+          //var location = locations[i];
 
 
-          geocodeAddress(geocoder, location, map, function(results){
+          setMarkers(map);
+
+          // geocodeAddress(geocoder, location, map, function(results){
             
-            setMarkers(results[0].address_components[0].long_name + " " + results[0].address_components[1].short_name 
-              + ", " + results[0].address_components[2].long_name + " " + results[0].address_components[4].short_name + " " + 
-              results[0].address_components[6].short_name, results[0].geometry.location.lat(), results[0].geometry.location.lng(), map);
-          });
+          //   setMarkers(results[0].address_components[0].long_name + " " + results[0].address_components[1].short_name 
+          //     + ", " + results[0].address_components[2].long_name + " " + results[0].address_components[4].short_name + " " + 
+          //     results[0].address_components[6].short_name, results[0].geometry.location.lat(), results[0].geometry.location.lng(), map);
+          // });
 
         }
         
@@ -114,9 +120,7 @@
 
             
           } else if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) { 
-            wait = true;
-            setTimeout("wait = true", 2000);
-            //alert("OQL: " + status);
+            
           }  else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
@@ -124,16 +128,20 @@
       }
 
 
-      function setMarkers(location, lat, lng, map) {
+      function setMarkers(map) {
 
+          var location = locations[car_number];
+          var lat = lats[car_number];
+          var lng = lngs[car_number];
           var make = makes[car_number];
           var model = models[car_number];
           var rego_number = rego_numbers[car_number];
           var cost_per_hour = costs_per_hour[car_number];
           var cost_per_day = costs_per_day[car_number];
+         
 
           var marker = new google.maps.Marker({
-            position: {lat: lat, lng: lng},
+            position: {lat: parseFloat(lat), lng: parseFloat(lng)},
             map: map,
             title: location,           
           });

@@ -2,7 +2,7 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
-<body>
+<body style = "background-image:url(images/car_background.jpg)">
 
 
 <div class="container">

@@ -1,23 +1,17 @@
-<head>
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            text-align: right;
-        }
+<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 
-        li {
-            display: inline;
-        }
-    </style>
-</head>
 
-<body>
-    <ul>
+
+<div class = "topbar">
+
+  <div class = "title">
+    <h1>The Car Share</h1>
+  </div>
+
+  <div class = "menu">
     @if (Auth::guest())
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Register</a></li>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
     @else
     <a href="{{ route('logout') }}" 
          onclick="event.preventDefault();
@@ -25,6 +19,6 @@
           Logout
     </a>
     @endif
-    </ul>
-</body>
-
+  </div>
+  
+</div>

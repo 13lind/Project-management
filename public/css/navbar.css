@@ -4,7 +4,8 @@
 {
 	margin-bottom:10px;
 	background:white;
-	min-height:48px
+	min-height:48px;
+	font-family: 'Raleway', sans-serif;
 }
 
 .title
@@ -63,6 +64,7 @@ h1
 	display: inline-block;
 	float: left;
 	background-color: rgba(0,0,0,0.6);;
+	font-family: 'Raleway', sans-serif;
 }
 
 .left-nav a
