@@ -40,6 +40,10 @@ class CarController extends Controller
 
 	}
 
+	public static function getCarInformation()
+	{
+		return DB::table('car_info')->get();
+	}
 
 	public static function getTotalCarCount()
 	{
