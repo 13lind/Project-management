@@ -58,7 +58,7 @@ html, body {
 .heading-home h1 {
   display: inline-block;
   font-family: 'Open Sans';
-  font-size: 72px;
+  font-size: 36px;
   color: black;
   text-transform: uppercase;
   position: relative;
