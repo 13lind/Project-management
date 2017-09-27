@@ -27,7 +27,7 @@ class BookingController extends Controller
 		$user = Auth::user();
 
         $booking_info = new Booking;
-        $booking_info->id = $user->id;
+        $booking_info->user_id = $user->id;
         $booking_info->car_used = request('car_used');
         $booking_info->rego_number = request('rego_number');
         $booking_info->car_location = request('car_location');
@@ -36,6 +36,8 @@ class BookingController extends Controller
         $booking_info->date_to = request('date_to');
         $booking_info->time_to = request('time_to');
         $booking_info->total_cost = request('total_cost_value');
+        $booking_info->cost_per_hour = request('cost_per_hour');
+        $booking_info->cost_per_day = request('cost_per_day');
         $booking_info->completed = false;
         $booking_info->save();
 

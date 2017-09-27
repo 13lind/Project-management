@@ -57,6 +57,7 @@ h1
 .left-nav 
 {
     padding: 5px;
+
 	width: 200px;
 	position: -webkit-sticky;  
     position: sticky;
@@ -89,7 +90,4 @@ h1
   color: white;
 }
  
-body 
-{
-	margin: 0px 0px;
-}
+

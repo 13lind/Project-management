@@ -1,41 +1,13 @@
 @extends('layout')
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('css/tables.css') }}">
+
+
+
+
 <style type="text/css">
-	table.gridtable {
-	font-family: verdana,arial,sans-serif;
-	font-size:15px;
-	color:#333333;
-	border-width: 1px;
-	border-color: #666666;
-	border-collapse: collapse;
-	width: 50%;
-	margin: auto;
-
-}
-table.gridtable th {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #dedede;
-}
-table.gridtable td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #ffffff;
-}
-table.gridtable tr:hover td {
-	background-color: #45a049;
-}
-
-
-
-
-
-.modal {
+  .modal {
     display: none; 
     position: fixed; 
     z-index: 1; 
@@ -72,12 +44,18 @@ table.gridtable tr:hover td {
     text-decoration: none;
     cursor: pointer;
 }
-
-
-
-
-
 </style>
+
+
+
+
+
+
+
+
+
+
+
 
 <?php  
   //Retrieve car information from database via CarController
@@ -94,13 +72,18 @@ table.gridtable tr:hover td {
   $dropoff_dates = TripHistoryController::getDropoffDate();
   $dropoff_times = TripHistoryController::getDropoffTime();
   $booking_costs = TripHistoryController::getBookingCosts();
+  $costs_per_hour = TripHistoryController::getHourCosts();
+  $costs_per_day = TripHistoryController::getDayCosts();
   $bookings = TripHistoryController::getBookings();
+  $car_id = TripHistoryController::getCarIDs();
+  $completion_status = TripHistoryController::getCompletion();
   //$user_id = App\Http\Controllers\HomeController::getUserFirstName()
+
 
 ?>
 
 <body>
-<div id="content">
+<div id="content" class = "container">
 
 
 
@@ -140,8 +123,11 @@ table.gridtable tr:hover td {
 	var dropoff_dates = <?php echo json_encode($dropoff_dates); ?>;
 	var dropoff_times = <?php echo json_encode($dropoff_times); ?>;
 	var booking_costs = <?php echo json_encode($booking_costs); ?>;
+  var costs_per_hour = <?php echo json_encode($costs_per_hour); ?>;
+  var costs_per_day = <?php echo json_encode($costs_per_day); ?>;
 	var bookings = <?php echo json_encode($bookings); ?>;
-
+  var car_id = <?php echo json_encode($car_id); ?>;
+  var completion_status = <?php echo json_encode($completion_status); ?>;
 	 
 
 	// var sel = document.getElementById('drop_down_view');
@@ -188,14 +174,19 @@ function buildTable(bookings) {
     table.className="gridtable";
     var thead = document.createElement("thead");
     var tbody = document.createElement("tbody");
+
     var headRow = document.createElement("tr");
-    ["Pickup Date","Fare ($)","Car Used"].forEach(function(el) {
-      var th=document.createElement("th");
+    ["Date","Fare ($)","Car Used", "Pickup In", "Dropoff Due", "Completed"].forEach(function(el) {
+
+      var th = document.createElement("th");
       th.appendChild(document.createTextNode(el));
       headRow.appendChild(th);
+
     });
+
     thead.appendChild(headRow);
     table.appendChild(thead); 
+    var overBookingFee = 0;
     var i = 0;
     bookings.forEach(function(el) {
       var tr = document.createElement("tr");
@@ -205,49 +196,219 @@ function buildTable(bookings) {
       for (var o in el) {  
         var td = document.createElement("td");
         td.appendChild(document.createTextNode(el[o]))
-        td.addEventListener("click", function() {
-
-
-		    var getPickUpDate = new Date(pickup_dates[j] + " " + moment(pickup_times[j], 'h:mm a').format('H:mm')); 
-
-
-		    var getDropOffDate = new Date(dropoff_dates[j] + " " + moment(dropoff_times[j], 'h:mm a').format('H:mm')); 
-
-		    var pickUpMilli = getPickUpDate.getTime(); 
-		    var dropOffMilli = getDropOffDate.getTime();
-
-		    var hours = Math.abs(pickUpMilli - dropOffMilli) / 36e5;
+  
 
 
 
-        	var getPickUpDate = moment(pickup_dates[j]).format('dddd, DD MMMM YYYY');
-        	var getPickUpTime = moment(pickup_times[j], 'h:mm a').format('H:mm');
 
-        	var getDropoffDate = moment(dropoff_dates[j]).format('dddd, DD MMMM YYYY');
-        	var getDropoffTime = moment(dropoff_times[j], 'h:mm a').format('H:mm');
-
-        	document.getElementById("staticMap").src=
-        	"https://maps.googleapis.com/maps/api/staticmap?center=" + parseFloat(lats[j]) + "," + parseFloat(lngs[j]) + "&zoom=15&size=400x400&maptype=roadmap\
-			&markers=size:mid%7Ccolor:red%7C" + parseFloat(lats[j]) + "," + parseFloat(lngs[j]) + "&key=AIzaSyAvsxxIPeWUltcyoYBVnjzIY9xOYDAEiTQ";
-
-        	document.getElementById("bookingInfo").innerHTML = 
-        	cars_used[j] + "<br>" + 
-        	rego_numbers[j] + "<br>" + 
-        	locations[j] + "<br>$" +
-        	booking_costs[j] + "<br><br>" +
-        	getPickUpDate + " " + getPickUpTime + " to<br>" +
-        	getDropoffDate + " " + getDropoffTime + "<br><br>" +
-        	"Total Hours: " + hours.toFixed(2) + "<br>" + "";
+             var getPickUpDate = new Date(pickup_dates[j] + " " + moment(pickup_times[j], 'h:mm a').format('H:mm')); 
 
 
-        									
-		    modal.style.display = "block";
-		});
+            var getDropOffDate = new Date(dropoff_dates[j] + " " + moment(dropoff_times[j], 'h:mm a').format('H:mm')); 
+
+            var pickUpMilli = getPickUpDate.getTime(); 
+            var dropOffMilli = getDropOffDate.getTime();
+
+            var hours = Math.abs(pickUpMilli - dropOffMilli) / 36e5;
+
+            var d = new Date();
+            var n = d.getTime();
+            var timeUntilDrop = dropOffMilli - n;
+            var timeUntilPickup = n - pickUpMilli;
+
+
+              var getPickUpDate = moment(pickup_dates[j]).format('dddd, DD MMMM YYYY');
+              var getPickUpTime = moment(pickup_times[j], 'h:mm a').format('H:mm');
+
+              var getDropoffDate = moment(dropoff_dates[j]).format('dddd, DD MMMM YYYY');
+              var getDropoffTime = moment(dropoff_times[j], 'h:mm a').format('H:mm');
+
+              
+
+
+
+
+
+        
+        if(o != 'completed') {
+
+
+
+          td.addEventListener("click", function() {
+
+
+
+
+            	document.getElementById("staticMap").src=
+            	"https://maps.googleapis.com/maps/api/staticmap?center=" + parseFloat(lats[j]) + "," + parseFloat(lngs[j]) + "&zoom=15&size=400x400&maptype=roadmap\
+    			&markers=size:mid%7Ccolor:red%7C" + parseFloat(lats[j]) + "," + parseFloat(lngs[j]) + "&key=AIzaSyAvsxxIPeWUltcyoYBVnjzIY9xOYDAEiTQ";
+
+            	document.getElementById("bookingInfo").innerHTML = 
+            	cars_used[j] + "<br>" + 
+            	rego_numbers[j] + "<br>" + 
+            	locations[j] + "<br>$" +
+            	booking_costs[j] + "<br><br>" +
+            	getPickUpDate + " " + getPickUpTime + " to<br>" +
+            	getDropoffDate + " " + getDropoffTime + "<br><br>" +
+            	"Total Hours: " + hours.toFixed(2) + "<br>" + "";
+          									
+  		    modal.style.display = "block";
+  		  });
+
+
+        if(o == 'date_from') {
+          td.innerHTML = getPickUpDate + " @ " + getPickUpTime;
+        }
+
+
+
+        if(o == 'total_cost') {
+           if(timeUntilDrop < 0 && completion_status[j] == false) {
+             overBookingFee = parseFloat(booking_costs[j]) + (parseFloat(costs_per_hour[j]) * (Math.abs(timeUntilDrop) / 36e5) * 3);
+             overBookingFee = overBookingFee.toFixed(2);
+
+             td.innerHTML = booking_costs[j] + " + " + (costs_per_hour[j] * (Math.abs(timeUntilDrop) / 36e5)  * 3).toFixed(2);
+           } else {
+              overBookingFee = parseFloat(booking_costs[j]);
+              td.innerHTML = parseFloat(booking_costs[j]).toFixed(2);
+
+           }
+        }
+
+
+
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        if(o == 'date_to') {
+          if(completion_status[j] == false){
+            
+
+           if(timeUntilDrop > 0) {
+
+
+              if(timeUntilDrop > 3600000) {
+                 
+                  td.innerHTML = (Math.abs(timeUntilDrop) / 36e5).toFixed(2) + " hours";
+                  
+              } else {
+
+                
+
+                td.innerHTML = ((Math.abs(timeUntilDrop) % 36e5) / 6e4).toFixed(2) + " minutes";
+              }
+
+            } else {
+              td.innerHTML = "<label style='font-weight: bold;'>" + (Math.abs(timeUntilDrop) / 36e5).toFixed(2) + " hours OVERDUE";
+
+            }
+          } else {
+            td.innerHTML = "-";
+          }
+        }
+
+
+
+        if(o == 'time_from') {
+          if(timeUntilPickup < 0) {
+            if(timeUntilPickup < -3600000) {
+              td.innerHTML = (Math.abs(timeUntilPickup) / 36e5).toFixed(2) + " hours";
+            } else {
+              td.innerHTML = ((Math.abs(timeUntilPickup) % 36e5) / 6e4).toFixed(2) + " minutes";
+            }
+          } else {
+            td.innerHTML = "-";
+          }
+        }
+
+
+
+//% 36e5) / 6e4)
+
+
+      }
+
+
+        if(o == 'completed') {
+            if(el[o] == 0) {
+
+
+
+            var time = new Date().getTime();
+            var date = new Date(time);
+            var hourz = date.getHours();
+            var am;
+           
+
+                if (hourz > 12) {
+                    hourz -= 12;
+                    am = " PM";
+                } else if (hourz === 0) {
+                   hourz = 12;
+                   am = " AM";
+                } else {
+                  am = " AM";
+                }
+
+            finalDropOffTime = hourz + ":" + addZero(date.getMinutes()) + am;
+            finalDropOffDate = date.getFullYear() + "/" + addZero(date.getMonth() + 1) + "/" + addZero(date.getDate());
+
+            
+
+               if(timeUntilPickup < 0) {
+                 
+                 td.innerHTML = "<form action = '/triphistory' method = 'POST'>" +
+                              "&#x2718;  <input type = 'hidden' name = 'test' value = '" + car_id[i] + "'>" +
+                              "<input type = 'hidden' name = 'total_fee' value = '" + overBookingFee + "'>" +
+                              "<input type = 'hidden' name = 'revised_dropoffdate' value = '" + finalDropOffDate + "'>" +
+                              "<input type = 'hidden' name = 'revised_dropofftime' value = '" + finalDropOffTime + "'>" +
+                              "<button id = 'completeButton' disabled='disabled'> Complete Trip </button>" +
+                              "</form>";
+
+              } else {
+
+                 td.innerHTML = "<form action = '/triphistory' method = 'POST'>" +
+                              "&#x2718;  <input type = 'hidden' name = 'test' value = '" + car_id[i] + "'>" +
+                              "<input type = 'hidden' name = 'total_fee' value = '" + overBookingFee + "'>" +
+                              "<input type = 'hidden' name = 'revised_dropoffdate' value = '" + finalDropOffDate + "'>" +
+                              "<input type = 'hidden' name = 'revised_dropofftime' value = '" + finalDropOffTime + "'>" +
+                              "<button id = 'completeButton'> Complete Trip </button>" +
+                              "</form>";
+
+              }
+
+
+
+            } else {
+
+              td.innerHTML = "&#x2714;";
+
+            }
+        }
+
+
+
+
 
         tr.appendChild(td);
+
+       
+
+
+
+
+
+
+
       }
+      
       i++;
       tbody.appendChild(tr);  
+      
     });
     table.appendChild(tbody);             
     return table;
@@ -256,13 +417,10 @@ function buildTable(bookings) {
 
 window.onload=function() {
   document.getElementById("content").appendChild(buildTable(bookings));
-  
+ 
   
   
 }
-
-
-
 
 
 

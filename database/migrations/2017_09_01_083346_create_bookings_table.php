@@ -14,7 +14,8 @@ class CreateBookingsTable extends Migration
     public function up()
     {
         Schema::create('car_bookings', function (Blueprint $table) {
-            $table->string('id');
+            $table->increments('id');
+            $table->string('user_id');
             $table->string('car_used');
             $table->string('rego_number');
             $table->string('car_location');
@@ -23,6 +24,8 @@ class CreateBookingsTable extends Migration
             $table->string('date_to');
             $table->string('time_to');
             $table->string('total_cost');
+            $table->string('cost_per_hour');
+            $table->string('cost_per_day');
             $table->boolean('completed');
             
             
