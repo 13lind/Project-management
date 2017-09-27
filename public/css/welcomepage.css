@@ -6,6 +6,9 @@ html, body {
     font-weight: 100;
     height: 100vh;
     margin: 0;
+    background-image: ("../../public/images/mainbackground.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .full-height {
