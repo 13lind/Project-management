@@ -1,12 +1,24 @@
 @extends('layout')
 @section('content')
 
+<style type="text/css">
+  body
+{
+  background-image:url(images/wallpaper.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0px 0px;
+}
+</style>
+
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.datetimepicker.css') }}" /> 
 <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/moment.js') }}"></script> 
  
+
+
 <body>
 
 
@@ -41,11 +53,13 @@
       <div>
         <label>Cost Per Hour ($):</label>
         <input type=“text” name=“Cost Per Hour” value="{{$cost_per_hour}}" readonly=”readonly”>
+        <input type="hidden" id ="cost_per_hour" name="cost_per_hour" type="text" value="{{$cost_per_hour}}">
       </div>
 
       <div>
         <label>Max Cost Per Day ($):</label>
         <input type=“text” name=“Max Cost Per Day” value="{{$cost_per_day}}" readonly=”readonly”>
+        <input type="hidden" id ="cost_per_day" name="cost_per_day" type="text" value="{{$cost_per_day}}">
       </div>
 
       <div>

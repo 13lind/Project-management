@@ -35,4 +35,5 @@ Route::post('/admin', 'AdminController@store');
 Route::post('/findcar', 'CarController@book');
 Route::get('/triphistory', 'TripHistoryController@index');
 Route::post('/confirmbooking', 'BookingController@confirm');
+Route::post('/triphistory', 'TripHistoryController@setBookingCompleted');
 

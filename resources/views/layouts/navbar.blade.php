@@ -2,10 +2,10 @@
 
 
 
-<div class = "topbar">
+<div class = "topbar" style = "background-image:url(images/wallpaper.jpg)">
 
   <div class = "title">
-    <h1>The Car Share</h1>
+    <h1> <a href = "/">The Car Share</a></h1>
   </div>
 
   <div class = "menu">
