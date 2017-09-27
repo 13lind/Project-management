@@ -44,7 +44,7 @@
             
         </div>
         
-    <div class="title">
+    <div class="heading-home">
         <H1>T</H1>
         <H1>H</H1>
         <H1>E</H1>
