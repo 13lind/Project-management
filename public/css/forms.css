@@ -40,12 +40,13 @@ input, select, textarea
 	padding-top:0px;
 	display: inline-block;
 	float: right;
-	min-width
+	margin-top:5%;
+	margin-bottom:5%;
 }
 
 .row
 {
-	min-width:229px;
+	min-width:249px;
 }
 
 button
