@@ -32,8 +32,11 @@ Route::get('/payment', 'PaymentController@index');
 Route::post('/payment', 'PaymentController@store');
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin', 'AdminController@store');
-Route::post('/findcar', 'CarController@book');
+Route::post('/findcar/booking', 'BookingController@book');
 Route::get('/triphistory', 'TripHistoryController@index');
 Route::post('/confirmbooking', 'BookingController@confirm');
 Route::post('/triphistory', 'TripHistoryController@setBookingCompleted');
 
+Route::post('/set', 'CarController@set');
+
+Route::get('/findcar/booking', 'BookingController@get')->name('get');

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Booking;
+use App\Car;
 use DB;
+use URL;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +17,7 @@ class BookingController extends Controller
 	public function __construct()
     {
         $this->middleware('auth');
+        //$this->redirectTo = URL::previous();
     }
 
 	public function index(Request $request) 
@@ -21,6 +25,47 @@ class BookingController extends Controller
 
 
 	}
+
+
+    public function get(Request $request) 
+    {
+        
+
+        $car_info = Session::get('carInfo');
+
+        return view('booking', ['make' => $car_info->make,
+                               'model' => $car_info->model,
+                               'rego_number' => $car_info->rego_number,
+                               'car_location' => $car_info->car_location,
+                               'cost_per_hour' => $car_info->cost_per_hour,
+                               'cost_per_day' => $car_info->cost_per_day]);
+
+    }
+
+
+
+
+
+    public function book(Request $request) 
+    {
+        $car_info = new Car;
+        $car_info->make = request('make');
+        $car_info->model = request('model');
+        $car_info->rego_number = request('rego_number');
+        $car_info->car_location = request('car_location');
+        $car_info->cost_per_hour = request('cost_per_hour');
+        $car_info->cost_per_day = request('cost_per_day');
+
+        
+        return view('booking', ['make' => $car_info->make,
+                                       'model' => $car_info->model,
+                                       'rego_number' => $car_info->rego_number,
+                                       'car_location' => $car_info->car_location,
+                                       'cost_per_hour' => $car_info->cost_per_hour,
+                                       'cost_per_day' => $car_info->cost_per_day]);
+        
+
+    }
 
 	public function confirm(Request $request) 
 	{
