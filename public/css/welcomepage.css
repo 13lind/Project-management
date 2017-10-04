@@ -69,10 +69,32 @@ html, body {
   -webkit-animation: port 3s 1 forwards;
 }
 
-#floating-panel {
+.floating-panel {
 	width: 200px;
 	margin-top: 100px;
 	
 }
 
+.book-button {
+    background: #333;
+    border: none;
+    color: white;
+    padding: 20px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+	/*display: block;*/
+    margin: 0 auto;
+    font-size: 25px;
+    border-radius: 8px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+.book-button:hover {
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+}
 

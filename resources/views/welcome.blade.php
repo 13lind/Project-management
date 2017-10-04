@@ -33,42 +33,25 @@
         
     </head>
     <body>
-
-
-
         <div class="flex-center position-ref full-height">
-
-
-            @if (Route::has('login'))
-                <div class="top-right links">
-
-
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-
-                    <a href="{{ url('/aboutus') }}">About</a>
-                    <a href="{{ url('/contact') }}">Contact</a>
-                </div>
-            @endif
-
-
-        <div>
-           
-            <input type="button" class = "button" value="BOOK NOW" onclick="window.location.href='/findcar'">
-        </div>
-            
-        </div>
-                
-        
-    <div class="heading-home">
-        <h1>THE CAR SHARE</h1>
-    </div>
-
-
+			@if (Route::has('login'))
+			<div class="top-right links">
+			@auth
+				<a href="{{ url('/home') }}">Home</a>
+				@else
+				<a href="{{ route('login') }}">Login</a>
+				<a href="{{ route('register') }}">Register</a>
+				@endauth
+				<a href="{{ url('/aboutus') }}">About</a>
+				<a href="{{ url('/contact') }}">Contact</a>
+			</div>
+			@endif
+			<div>
+				<input type="button" class="book-button" value="BOOK NOW" onclick="window.location.href='/findcar'">
+			</div>
+		</div>
+		<div class="heading-home">
+			<h1>THE CAR SHARE</h1>
+		</div>
     </body>
 </html>
