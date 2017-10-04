@@ -42,6 +42,11 @@
 
             
         </div>
+		
+	<div id="floating-panel">
+		<input id="address" type="textbox" style="width: 15%" placeholder="Enter an Address or Postcode">
+		<input id="submit" type="button" value="Go">
+	</div>
         
     </body>
     
