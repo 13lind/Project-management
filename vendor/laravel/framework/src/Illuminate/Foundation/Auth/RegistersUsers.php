@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Session;
 
 trait RegistersUsers
 {
@@ -17,6 +18,8 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
+        Session::put('url.intended', url()->previous());
+        
         return view('auth.register');
     }
 
@@ -35,7 +38,7 @@ trait RegistersUsers
         $this->guard()->login($user);
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+                        ?: redirect(Session::get('url.intended'));
     }
 
     /**
