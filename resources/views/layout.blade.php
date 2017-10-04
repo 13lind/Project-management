@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 @include('layouts.navbar')
-@include('layouts.sidebar')
+
 <style type="text/css">
 html, body {
     background-color: #fff;
