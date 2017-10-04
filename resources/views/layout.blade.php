@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 @include('layouts.navbar')
-@include('layouts.sidebar')
+
 <style type="text/css">
-body
-{
-  background-image:url(images/wallpaper.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+    background-image: url("/images/mainbackground.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 </style>
 <html>
@@ -19,3 +24,5 @@ body
 	</form>
 	
 </html>
+
+

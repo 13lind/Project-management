@@ -44,6 +44,7 @@
 
     <script>
       var infoWindow;    
+      var markers = [];
 
       var car_array = <?php echo json_encode($car_array); ?>;
 
@@ -66,6 +67,7 @@
           center: melbourne,
           styles: removePOI 
         });
+        
         var geocoder = new google.maps.Geocoder();
        
  
@@ -87,12 +89,85 @@
         
 
 
-        //address search function here
+        document.getElementById('submit').addEventListener('click', function(results) {
+          geocodeAddress(geocoder, map, function(results){
+            
+
+        var searchedLocation = results[0].geometry.location;
+        var compareLocation = new google.maps.LatLng(car_array[0].lat, car_array[0].long);
+        var closestCar = getDistance(compareLocation, searchedLocation);
+
+        var closestCarID;
+
+        for (var i = 1; i < total_cars; i++) {
+         compareLocation = new google.maps.LatLng(car_array[i].lat, car_array[i].long)
+
+         
+         var currentDistance = getDistance(compareLocation, searchedLocation);
+
+          if(currentDistance < closestCar) {
+            closestCar = currentDistance;
+            closestCarID = i;
+          }
+
+
+        }
+        
+
+
+        var getClosestLatLng = new google.maps.LatLng(car_array[closestCarID].lat, car_array[closestCarID].long);
+
+
+
+        addInfoWindow(map, markers[closestCarID], closestCarID);
+
+
+
+        map.setCenter(getClosestLatLng);
 
 
 
 
+          });
+        });
 
+
+
+
+      }
+
+
+
+      var rad = function(x) {
+        return x * Math.PI / 180;
+      };
+
+      var getDistance = function(p1, p2) {
+        var R = 6378137; // Earth’s mean radius in meter
+        var dLat = rad(p2.lat() - p1.lat());
+        var dLong = rad(p2.lng() - p1.lng());
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+          Math.sin(dLong / 2) * Math.sin(dLong / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+        return d; // returns the distance in meter
+      };
+
+
+
+
+      function geocodeAddress(geocoder, resultsMap, callback) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+             callback(results);  
+
+
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
       }
 
 
@@ -140,7 +215,7 @@
             addInfoWindow(map, marker, i);
 
           });
-
+          markers.push(marker);
          
 
       }
