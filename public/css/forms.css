@@ -33,13 +33,19 @@ input, select, textarea
 .container 
 {
     border-radius: 5px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
-	margin-left:20%;
+	margin-left:40%;
 	margin-right:40%;
 	padding-top:0px;
 	display: inline-block;
 	float: right;
+	min-width
+}
+
+.row
+{
+	min-width:229px;
 }
 
 button

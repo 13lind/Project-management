@@ -22,7 +22,6 @@
 
         <div class="flex-center position-ref full-height">
 
-            
 
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -44,9 +43,6 @@
             
         </div>
         
-    <div class="heading-home">
-        <h1>THE CAR SHARE</h1>
-    </div>
     </body>
     
 </html>
