@@ -174,7 +174,7 @@
       function addInfoWindow(map, marker, id) {
 
         infoWindow.setContent("<div id='tabs'>"+
-                        "<form id='button' method='POST' action='/findcar'>"+
+                        "<form id='button' method='POST' action='/set'>"+
                         "<label>Make: " + car_array[id].make + "</label><br>" +
                         "<input type='hidden' name='make' value='" + car_array[id].make + "'/>" +
                         "<label>Model: " + car_array[id].model + "</label><br>" +

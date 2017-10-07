@@ -22,41 +22,42 @@
 <body>
 
 
-  <div class="container">
+  <div class="form">
+    <div  class="tab-content">
     <form method="POST" action="/confirmbooking">
       <div>
 
-        <h2>Hire Car Details</h2>
+        <h1>Hire Car Details</h1>
 
       </div>
 
 
 
-      <div>
+      <div class="field-wrap">
         <label>Vehicle:</label>
         <input type=“text” name=“Model” value="{{$make .' '. $model}}" readonly=”readonly”>
         <input type="hidden" id ="car_used" name="car_used" type="text" value="{{$make .' '. $model}}">
       </div>
 
-      <div>
+      <div class="field-wrap">
         <label>Rego Number:</label>
         <input type=“text” name=“Rego Number” value="{{$rego_number}}" readonly=”readonly”>
         <input type="hidden" id ="rego_number" name="rego_number" type="text" value="{{$rego_number}}">
       </div>
 
-      <div>
+      <div class="field-wrap">
         <label>Car Location:</label>
         <input type=“text” name=“Car Location” value="{{$car_location}}" readonly=”readonly”>
         <input type="hidden" id ="car_location" name="car_location" type="text" value="{{$car_location}}">  
       </div>
 
-      <div>
+      <div class="field-wrap">
         <label>Cost Per Hour ($):</label>
         <input type=“text” name=“Cost Per Hour” value="{{$cost_per_hour}}" readonly=”readonly”>
         <input type="hidden" id ="cost_per_hour" name="cost_per_hour" type="text" value="{{$cost_per_hour}}">
       </div>
 
-      <div>
+      <div class="field-wrap">
         <label>Max Cost Per Day ($):</label>
         <input type=“text” name=“Max Cost Per Day” value="{{$cost_per_day}}" readonly=”readonly”>
         <input type="hidden" id ="cost_per_day" name="cost_per_day" type="text" value="{{$cost_per_day}}">
@@ -72,19 +73,21 @@
       <div>
         <label >To:</label>
       </div>
-      <div>
+      <div">
         <input style = "width: 50%; float:left;" id = "date_to" name ="date_to" class="dropoffdatepicker" type="text" placeholder="Drop-off Date" required>
         <input style = "width: 50%; float:left;" id = "time_to" name ="time_to" class="timepicker" type="text" placeholder="Drop-off Time" required>
       </div>
+
       <div>
         <label id="total_cost_label" name="total_cost_label" value = "3.30">Estimated Fee: $0.00</label>
         <input type="hidden" id = "total_cost_value" name="total_cost_value" value="0.00">
       </div>
-
-
-      <button>Confirm Booking</button> 
+      <br>
+      <br>
+      <button class="button button-block">Confirm Booking</button> 
     </form>
   </div>
+</div>
 </body>
 
 <script>

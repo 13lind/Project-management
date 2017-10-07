@@ -4,8 +4,8 @@
   <div class = "menu">
     @if (Auth::guest())
 	<a href = "/">Home</a>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
+    <a href="/login">Login/Register</a>
+
     @else
 	<a href = "/">Home</a>
 	<a href="/admin">Admin Menu</a>
