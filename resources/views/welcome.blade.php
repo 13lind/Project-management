@@ -39,8 +39,8 @@
 			@auth
 				<a href="{{ url('/home') }}">Home</a>
 				@else
-				<a href="{{ route('login') }}">Login</a>
-				<a href="{{ route('register') }}">Register</a>
+				<a href="{{ route('login') }}">Login/Register</a>
+				
 				@endauth
 				<a href="{{ url('/aboutus') }}">About</a>
 				<a href="{{ url('/contact') }}">Contact</a>

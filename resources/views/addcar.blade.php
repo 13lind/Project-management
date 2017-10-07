@@ -5,10 +5,11 @@
 <body>
 
 
-<div class="container">
+<div class="form">
+	<div class="tab-content">
 <form method="POST" action="">
-	<h2>Add Car</h2>
-	<div>
+	<h1>Add Car</h1>
+	<div class="field-wrap">
 		<label>Car Make</label>
 
 		<div>
@@ -17,7 +18,7 @@
 		</div>
 	</div>
 
-	<div>
+	<div class="field-wrap">
 		<label>Car Model</label>
 
 		<div>
@@ -26,7 +27,7 @@
 		</div>
 	</div>
 
-	<div>
+	<div class="field-wrap">
 		<label>Car Registration</label>
 
 		<div>
@@ -35,7 +36,7 @@
 		</div>
 	</div>
 
-	<div>
+	<div class="field-wrap">
 		<label>Car Cost Per Hour ($)</label>
 
 		<div>
@@ -44,7 +45,7 @@
 		</div>
 	</div>		
 
-	<div>
+	<div class="field-wrap">
 		<label>Max Car Cost Per Day ($)</label>
 
 		<div>
@@ -53,7 +54,7 @@
 		</div>
 	</div>
 
-	<div>
+	<div class="field-wrap">
 		<h2>Car Location</h2>
 		<label>Street Address</label>
 
@@ -63,7 +64,7 @@
 		</div>
 	</div>					
 
-	<div>
+	<div class="field-wrap">
 		<label>Suburb</label>
 
 		<div>
@@ -72,7 +73,7 @@
 		</div>
 	</div>		
 
-	<div>
+	<div class="field-wrap">
 		<label> State</label>
 
 		<div>
@@ -81,7 +82,7 @@
 		</div>
 	</div>
 
-	<div>
+	<div class="field-wrap">
 		<label>Postcode</label>
 
 		<div>
@@ -90,10 +91,12 @@
 		</div>
 	</div>
 
-	<button>Submit</button>
+	<button class="button button-block">Submit</button>
 
 </form>
 </div>
+</div>
 </body>
+
 
 @endsection
