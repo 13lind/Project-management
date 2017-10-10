@@ -29,9 +29,9 @@
           
             <div class="field-wrap">
             <label>
-              Email Address<span class="req">*</span>
+              Username<span class="req">*</span>
             </label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+            <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
           </div>
           
           <div class="field-wrap">
@@ -55,6 +55,14 @@
           <form method="POST" action="{{ route('register') }}">
           
           <div class="top-row">
+
+            <div class="field-wrap">
+              <label>
+                Username<span class="req">*</span>
+              </label>
+              <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+            </div>
+
             <div class="field-wrap">
               <label>
                 First Name<span class="req">*</span>

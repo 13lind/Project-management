@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Car;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class AdminController extends Controller
@@ -17,7 +18,11 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('addcar');
+        if(Auth::user()->isAdmin())
+            return view('addcar');
+        else {
+            return redirect('/home');
+        }
     }
 
     public function store()
