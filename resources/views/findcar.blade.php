@@ -26,6 +26,15 @@
         margin: 0;
         padding: 0;
       }
+	  
+	  #floating-panel {
+		    position: absolute;
+			top: 0px;
+			left: 5%;
+			height: 500px;
+			width: 500px;
+			z-index: 99;
+	  }
 
     </style>
 
@@ -36,7 +45,6 @@
     <div id="floating-panel">
       <input id="address" type="textbox" style="width: 15%" placeholder="Enter an Address or Postcode">
       <input id="submit" type="button" value="Go">
-
 
     </div>
 
