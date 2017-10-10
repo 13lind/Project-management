@@ -43,7 +43,7 @@
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
-          <button class="button button-block"/>Log In</button>
+          <button name = "login" class="button button-block"/>Log In</button>
           
           </form>
 
@@ -116,7 +116,7 @@
 
 
           
-          <button type="submit" class="button button-block"/>Register</button>
+          <button name="register" type="submit" class="button button-block"/>Register</button>
           
           </form>
 
