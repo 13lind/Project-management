@@ -19,7 +19,6 @@ trait RegistersUsers
     public function showRegistrationForm()
     {
         Session::put('url.intended', url()->previous());
-        
         return view('auth.register');
     }
 
@@ -37,8 +36,15 @@ trait RegistersUsers
 
         $this->guard()->login($user);
 
-        return $this->registered($request, $user)
+        if (!empty(Session::get('url.intended'))) {
+                    return $this->registered($request, $user)
                         ?: redirect(Session::get('url.intended'));
+        } else {
+                    return $this->registered($request, $user)
+                            ?: redirect($this->redirectPath());
+
+        }           
+
     }
 
     /**
