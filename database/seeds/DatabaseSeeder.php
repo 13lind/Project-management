@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->call('CarTableSeeder');
+        $this->call('AdminSeeder');
         // ...
 
         // FOREIGN_KEY_CHECKS is supposed to only apply to a single
