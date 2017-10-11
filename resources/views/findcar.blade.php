@@ -54,7 +54,7 @@
 
     <div id="floating-panel" >
       <input id="address" class="search" type="textbox" style="width: 45%;" placeholder="Enter an Address or Postcode">
-      <input id="submit" type="button" class="search" style="height:"25px"; value="Go">
+      <input id="submit" type="button" class="search" style=" background-color=fff;" value="Go">
 
     </div>
 
