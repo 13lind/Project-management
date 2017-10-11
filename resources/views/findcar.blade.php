@@ -26,6 +26,16 @@
         margin: 0;
         padding: 0;
       }
+      
+      .search{
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);      
+      }
 	  
 	  #floating-panel {
 		position: absolute;
@@ -33,11 +43,7 @@
 		left: 10%;
 		width: 500px;
 		z-index: 99;
-		box-sizing: border-box;
-   		border-bottom: 1px solid transparent;
-   		padding: 12px 104px 11px 64px;
-   		transition-property: background,box-shadow;
-   		transition-duration: 0.3s;
+		padding: 0 11px 0 13px;
 	  }
 
     </style>
@@ -46,7 +52,7 @@
 
   <body>
 
-    <div id="floating-panel">
+    <div id="floating-panel" class="search">
       <input id="address" type="textbox" style="width: 45%; height: 25px;" placeholder="Enter an Address or Postcode">
       <input id="submit" type="button" style="height:"25px"; value="Go">
 
