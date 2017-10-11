@@ -53,8 +53,9 @@
   <body>
 
     <div id="floating-panel" >
-      <input id="address" class="search" type="textbox" style="width: 45%; padding: 5px;" placeholder="Enter an Address or Postcode">
-      <input id="submit" type="button" class="search" style=" background-color=fff;" value="Go">
+      <input id="address" class="search" type="textbox" style="width: 45%; padding: 5px;" placeholder="Enter an Address or Postcode" 
+      onkeydown = "if (event.keyCode == 13)document.getElementById('submit').click()">
+      <input id="submit" type="button" class="search" style=" background-color=fff;" value="Go" >
 
     </div>
 
