@@ -33,6 +33,13 @@
 		left: 10%;
 		width: 500px;
 		z-index: 99;
+		box-sizing: border-box;
+   		width: 392px;
+   		height: 48px;
+   		border-bottom: 1px solid transparent;
+   		padding: 12px 104px 11px 64px;
+   		transition-property: background,box-shadow;
+   		transition-duration: 0.3s;
 	  }
 
     </style>
