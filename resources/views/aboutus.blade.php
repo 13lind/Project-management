@@ -2,7 +2,7 @@
 @section('content')
 
 <body>
-
+<div class="about">
 <h2>Who are we?</h2>
 <p>We are a team of Universiry students in our final year who saw a need, and went straight into action!</p>
 <h2>Why are we here?</h2>
@@ -14,6 +14,6 @@
 <p>To see the amount of vehicles on the road and in parking lots reduced significantly, with the cars that are around being utilised to their proper potential</p>
 <h2>Our Vision for the Future</h2>
 <p>We want to see Driveless Cars in action, increasing safety for passengers and pedestrians. We want these cars to be bookable by our service, and for them to drive to you as opposed to you finding them in a lot. This is the future. This is The Car Share.</p>
-
+</div>
 </body>
 
