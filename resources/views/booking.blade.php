@@ -21,7 +21,7 @@
 
 <body>
 
-<div class="contact-form">
+
   <div class="form">
     <div  class="tab-content">
     <form method="POST" action="/confirmbooking">
@@ -88,7 +88,7 @@
     </form>
   </div>
 </div>
-</div>
+
 </body>
 
 <script>
