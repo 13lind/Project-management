@@ -46,7 +46,7 @@
 				<a href="{{ url('/contact') }}">Contact</a>
 			</div>
 			@endif
-			<div class="book-now">
+			<div class="book-now" style = "margin-top: 200px;">
 				<input type="button" class="book-button" value="BOOK NOW" onclick="window.location.href='/findcar'">
 			</div>
 		</div>
