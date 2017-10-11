@@ -21,7 +21,7 @@
 
 <body>
 
-
+<div class="contact-form">
   <div class="form">
     <div  class="tab-content">
     <form method="POST" action="/confirmbooking">
@@ -87,6 +87,7 @@
       <button class="button button-block">Confirm Booking</button> 
     </form>
   </div>
+</div>
 </div>
 </body>
 
