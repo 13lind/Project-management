@@ -32,7 +32,7 @@
         border-radius: 2px 0 0 2px;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        height: 32px;
+        height: 30px;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);      
       }
@@ -53,7 +53,7 @@
   <body>
 
     <div id="floating-panel" >
-      <input id="address" class="search" type="textbox" style="width: 45%; height: 25px;" placeholder="Enter an Address or Postcode">
+      <input id="address" class="search" type="textbox" style="width: 45%;" placeholder="Enter an Address or Postcode">
       <input id="submit" type="button" style="height:"25px"; value="Go">
 
     </div>
