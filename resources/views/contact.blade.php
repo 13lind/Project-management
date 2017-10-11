@@ -44,7 +44,7 @@ p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 20.0px Helveti
 
 
 <body>
-    
+    <div class="contact-form">
 <h1>Contact Us</h1>
 
 <p class="p1"><span class="s1">Phone:</span></p>
@@ -59,6 +59,6 @@ p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 20.0px Helveti
 
 <p class="p5"><span class="s5">Opening Hours:</span></p>
 <div class="floating4">Monday: 8:30am - 5:30pm <br> Tuesday: 8:30am - 5:30pm <br> Wednesday: 8:30am - 5:30pm <br> Thursday: 8:30am - 5:30pm <br> Friday: 8:30am - 5:30pm</div>
-
+</div>
 </body>
 </html>
