@@ -19,11 +19,30 @@ class AdminController extends Controller
     public function index()
     {
         if(Auth::user()->isAdmin())
+            return view('adminmenu');
+        else {
+            return redirect('/home');
+        }
+    }
+
+    public function addcar()
+    {
+        if(Auth::user()->isAdmin())
             return view('addcar');
         else {
             return redirect('/home');
         }
     }
+
+    public function removecar()
+    {
+        if(Auth::user()->isAdmin())
+            return view('removecar');
+        else {
+            return redirect('/home');
+        }
+    }
+
 
     public function store()
     {
@@ -40,6 +59,8 @@ class AdminController extends Controller
 		$car_postcode = request('postcode');
 
 		$car_info->car_location = $car_street_address . ", " . $car_city . " " . $car_suburb . " " . $car_postcode;
+        $car_info->lat = request('lat');
+        $car_info->long = request('long');
 		$car_info->cost_per_hour = request('cost_per_hour');
 		$car_info->cost_per_day = request('cost_per_day');
 		$car_info->avaliable = true;

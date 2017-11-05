@@ -8,7 +8,7 @@
   $car_array = CarController::getCarInformation();
 
 ?>
-
+@include('layouts.navbar')
 
 <html>
   <head>
@@ -37,14 +37,12 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);      
       }
 	  
-	  #floating-panel {
-		position: absolute;
-		top: 10px;
-		left: 10%;
-		width: 500px;
-		z-index: 99;
-		padding: 0 11px 0 13px;
-	  }
+  	  #floating-panel {
+    		position: absolute;
+    		width: 1000px;
+    		z-index: 99;
+    		padding: 10px 11px 0 150px;
+  	  }
 
     </style>
 
@@ -54,7 +52,7 @@
 
     <div id="floating-panel" >
       <input id="address" class="search" type="textbox" style="width: 45%; padding: 5px;" placeholder="Enter an Address or Postcode" 
-      onkeydown = "if (event.keyCode == 13)document.getElementById('submit').click()">
+        onkeydown = "if (event.keyCode == 13)document.getElementById('submit').click()">
       <input id="submit" type="button" class="search" style=" background-color=fff;" value="Go" >
 
     </div>
