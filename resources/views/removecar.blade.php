@@ -10,6 +10,7 @@
 		<div class="tab-content">
 
 			<select id="daySelect"></select>
+			<button>Confirm</button>
 
 		</div>
 	</div>
@@ -19,8 +20,7 @@
 	
 	daySelect = document.getElementById('daySelect');
 	var option = document.createElement('option');
-	option.text = 'cool';
-	daySelect.appendChild(option);
+	
 
 </script>
 
