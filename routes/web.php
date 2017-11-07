@@ -35,6 +35,7 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/addcar', 'AdminController@addcar');
 Route::post('/admin/addcar', 'AdminController@store');
 Route::get('/admin/removecar', 'AdminController@removecar');
+Route::post('/admin/removecar', 'AdminController@delete');
 
 Route::post('/findcar/booking', 'BookingController@book');
 Route::get('/triphistory', 'TripHistoryController@index');
