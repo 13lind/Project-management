@@ -21,7 +21,7 @@ class AdminController extends Controller
         if(Auth::user()->isAdmin())
             return view('adminmenu');
         else {
-            return redirect('/home');
+            return redirect('/');
         }
     }
 
@@ -30,7 +30,7 @@ class AdminController extends Controller
         if(Auth::user()->isAdmin())
             return view('addcar');
         else {
-            return redirect('/home');
+            return redirect('/');
         }
     }
 
@@ -39,7 +39,7 @@ class AdminController extends Controller
         if(Auth::user()->isAdmin())
             return view('removecar');
         else {
-            return redirect('/home');
+            return redirect('/');
         }
     }
 
@@ -67,7 +67,18 @@ class AdminController extends Controller
 
         $car_info->save();
 
-        return redirect('/home');
+        return redirect('/admin');
+    }
+
+    public function delete()
+    {
+
+        $car_id = request('selectedCarID');
+        DB::table('car_info')->where('id', '=', $car_id)->delete();
+
+        return redirect('/admin');
+
+
     }
 
 
