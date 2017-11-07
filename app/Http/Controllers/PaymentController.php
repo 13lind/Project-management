@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class PaymentController extends Controller
 {
 
-	protected $redirectTo = '/home';
+	protected $redirectTo = '/profile';
 
 	public function __construct()
     {

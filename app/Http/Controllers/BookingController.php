@@ -86,7 +86,7 @@ class BookingController extends Controller
         $booking_info->completed = false;
         $booking_info->save();
 
-        return redirect('/home');
+        return redirect('/triphistory');
 
 	}
 

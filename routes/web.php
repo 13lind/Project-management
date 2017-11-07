@@ -25,7 +25,7 @@ Route::get('/contact', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@index');
 
 Route::get('/findcar', 'CarController@index');
 Route::get('/payment', 'PaymentController@index');
