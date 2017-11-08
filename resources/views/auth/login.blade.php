@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html >
+@extends('layout')
+@section('content')
+
 <head>
-  <meta charset="UTF-8">
+  
   <title>Sign-Up/Login Form</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   
-      <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
   
 </head>
@@ -41,7 +42,7 @@
             <input id="password" type="password" name="password" required>
           </div>
           
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          <p class="forgot"><a href="{{ route('password.request') }}">Forgot Password?</a></p>
           
           <button name = "login" class="button button-block"/>Log In</button>
           
@@ -132,4 +133,5 @@
 
 
 </body>
-</html>
+
+@endsection
