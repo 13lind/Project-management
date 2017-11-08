@@ -5,15 +5,15 @@
 
 <div class = "menu">
   
-  <ul id="main-nav-div">
+  <ul class="menu-unordered" id ="main-nav-div">
     @if (Auth::guest())
-  	  <li><a href = "/">Home</a></li>
-      <li><a href="/login">Login/Register</a></li>
+  	  <li class="menu-ordered"><a href = "/">Home</a></li>
+      <li class="menu-ordered"><a href="/login">Login/Register</a></li>
     @endif
 
     @if (!Auth::guest())
       @if (Auth::user()->isAdmin())
-        <li><a href="/admin">Admin Menu</a></li>
+        <li class="menu-ordered"><a href="/admin">Admin Menu</a></li>
       @endif
     @endif
 
@@ -21,12 +21,12 @@
       
         
 
-      	<li><a href = "/">Home</a></li>
-      	<li><a href="/findcar">Find a Car</a></li>
-      	<li><a href="/triphistory">Trip History</a></li>
-      	<li><a href="/profile">Profile</a></li>
-      	<li><a href="/payment">Payment</a></li>
-        <li><a href="{{ route('logout') }}" 
+      	<li class="menu-ordered"><a href = "/">Home</a></li>
+      	<li class="menu-ordered"><a href="/findcar">Find a Car</a></li>
+      	<li class="menu-ordered"><a href="/triphistory">Trip History</a></li>
+      	<li class="menu-ordered"><a href="/profile">Profile</a></li>
+      	<li class="menu-ordered"><a href="/payment">Payment</a></li>
+        <li class="menu-ordered"><a href="{{ route('logout') }}" 
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
                 Logout
@@ -39,9 +39,9 @@
   </ul>
 
     @if(Request::path() === '/')
-    <ul id="contact-div">
-      <li><a href="/aboutus">About Us</a></li>
-      <li><a href="/contact">Contact</a></li>
+    <ul class="menu-unordered" id="contact-div">
+      <li class="menu-ordered"><a href="/aboutus">About Us</a></li>
+      <li class="menu-ordered"><a href="/contact">Contact</a></li>
     </ul>
     @endif
 
