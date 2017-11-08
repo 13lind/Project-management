@@ -8,6 +8,16 @@
 
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.1.0/mapquest.css"/>
 
+    <style type="text/css">
+    	option {
+    		background: rgba(19, 35, 47, 0.9);
+    	}
+
+    	li {
+    		color: white;
+    	}
+    </style>
+
     <script type="text/javascript">
 
 
@@ -72,8 +82,17 @@
 					<label>Car Make</label>
 
 					<div>
-						<input id="make" type="text" name="make" placeholder="Ford" 
+						<input id="make" type="text" name="make" placeholder="Ford"
 						 required autofocus>
+						@if ($errors->has('make'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('make') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif						 
 					</div>
 				</div>
 
@@ -83,6 +102,15 @@
 					<div>
 						<input id="model" type="text" name="model" placeholder="Falcon" 
 						 required autofocus>
+						@if ($errors->has('model'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('model') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif						 
 					</div>
 				</div>
 
@@ -92,8 +120,19 @@
 					<div>
 						<input id="rego_number" type="text" name="rego_number"  placeholder="AAA-000" 
 						 required autofocus>
+						@if ($errors->has('rego_number'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('rego_number') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif
 					</div>
 				</div>
+
+
 
 				<div class="field-wrap">
 					<label>Car Cost Per Hour ($)</label>
@@ -101,6 +140,15 @@
 					<div>
 						<input id="cost_per_hour" type="text" name="cost_per_hour"  placeholder="8.50" 
 						 required autofocus>
+						@if ($errors->has('cost_per_hour'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('cost_per_hour') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif					 
 					</div>
 				</div>		
 
@@ -110,6 +158,15 @@
 					<div>
 						<input id="cost_per_day" type="text" name="cost_per_day" placeholder="70" 
 						 required autofocus>
+						@if ($errors->has('cost_per_day'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('cost_per_day') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif						 
 					</div>
 				</div>
 
@@ -120,6 +177,15 @@
 					<div>
 						<input id="street_address" type="text" name="street_address" placeholder="123 Smith Street" 
 						 required autofocus>
+						@if ($errors->has('street_address'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('street_address') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif						 
 					</div>
 				</div>					
 
@@ -129,6 +195,15 @@
 					<div>
 						<input id="suburb" type="text" name="suburb" placeholder="Fitzroy" 
 						 required autofocus>
+						@if ($errors->has('suburb'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('suburb') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif						 
 					</div>
 				</div>		
 
@@ -136,8 +211,18 @@
 					<label> State</label>
 
 					<div>
-						<input id="state" type="text" name="state" placeholder="VIC" 
+						<select id="state" type="text" name="state" placeholder="VIC" 
 						 required autofocus>
+						 		<option>ACT</option>
+						 		<option>NT</option>
+						 		<option>NSW</option>
+						 		<option>QLD</option>
+						 		<option>SA</option>
+						 		<option>TAS</option>
+						 		<option selected>VIC</option>
+						 		<option>WA</option>
+						 		
+						 </select>
 					</div>
 				</div>
 
@@ -147,6 +232,15 @@
 					<div>
 						<input id="postcode" type="text" name="postcode" placeholder="3065" 
 						 required autofocus>
+						@if ($errors->has('postcode'))
+						    <div>
+						        <ul>
+						            @foreach ($errors->get('postcode') as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif						 
 					</div>
 				</div>
 

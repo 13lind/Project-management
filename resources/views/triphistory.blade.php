@@ -4,8 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/tables.css') }}">
 
 
-
-
 <style type="text/css">
   .modal {
     display: none; 
@@ -48,41 +46,28 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <?php  
   //Retrieve car information from database via CarController
 
   use App\Http\Controllers\TripHistoryController;
 
-  $cars_used = TripHistoryController::getCarUsed();
-  $rego_numbers = TripHistoryController::getCarRego();
-  $locations = TripHistoryController::getCarLocation();
+  $booking_info = TripHistoryController::getBookingInformation();
+
+
   $lats = TripHistoryController::getLat();
   $lngs = TripHistoryController::getLng();
-  $pickup_dates = TripHistoryController::getPickupDate();
-  $pickup_times = TripHistoryController::getPickupTime();
-  $dropoff_dates = TripHistoryController::getDropoffDate();
-  $dropoff_times = TripHistoryController::getDropoffTime();
+
   $booking_costs = TripHistoryController::getBookingCosts();
-  $costs_per_hour = TripHistoryController::getHourCosts();
-  $costs_per_day = TripHistoryController::getDayCosts();
+
   $bookings = TripHistoryController::getBookings();
   $car_id = TripHistoryController::getCarIDs();
   $completion_status = TripHistoryController::getCompletion();
-  //$user_id = App\Http\Controllers\HomeController::getUserFirstName()
+  
 
 
 ?>
 
-<body>
+<body style="margin-top: 50px">
 <div id="content" class = "container">
 
 
@@ -104,7 +89,7 @@
 </div>
 
 <div>
-<label id="car_info"></label>
+  <label id="car_info"></label>
 </div>
 
 
@@ -113,52 +98,19 @@
 <script type="text/javascript" src="{{ asset('js/moment.js') }}"></script> 
 <script type="text/javascript">
 	
-	var cars_used = <?php echo json_encode($cars_used); ?>;
-	var rego_numbers = <?php echo json_encode($rego_numbers); ?>;
-	var locations = <?php echo json_encode($locations); ?>;
+  var booking_info = <?php echo json_encode($booking_info); ?>;
+
 	var lats = <?php echo json_encode($lats); ?>;
 	var lngs = <?php echo json_encode($lngs); ?>;
-	var pickup_dates = <?php echo json_encode($pickup_dates); ?>;
-	var pickup_times = <?php echo json_encode($pickup_times); ?>;
-	var dropoff_dates = <?php echo json_encode($dropoff_dates); ?>;
-	var dropoff_times = <?php echo json_encode($dropoff_times); ?>;
+
 	var booking_costs = <?php echo json_encode($booking_costs); ?>;
-  var costs_per_hour = <?php echo json_encode($costs_per_hour); ?>;
-  var costs_per_day = <?php echo json_encode($costs_per_day); ?>;
+
 	var bookings = <?php echo json_encode($bookings); ?>;
   var car_id = <?php echo json_encode($car_id); ?>;
   var completion_status = <?php echo json_encode($completion_status); ?>;
 	 
 
-	// var sel = document.getElementById('drop_down_view');
-	// var fragment = document.createDocumentFragment();
 
-	// cars_used.forEach(function(car_used, index) {
-	//     var opt = document.createElement('option');
-	//     opt.innerHTML = car_used;
-	//     opt.value = car_used;
-	//     fragment.appendChild(opt);
-	// });
-
-	// for (var i = 0; i < cars_used.length; i++) {
-
-	// var testlabel = document.createElement('label');
-	// testlabel.innerHTML = cars_used[i];
-	// document.body.appendChild(testlabel);
-	// 	document.write("<br>");
-
-
-	// }
-
-
-
-//sel.appendChild(fragment);
-
-// function changeInfo() {
-// 	var sel = document.getElementById("drop_down_view");
-// 	var text = pickup_dates[sel.selectedIndex-1] + " $" + booking_costs[sel.selectedIndex-1] + " " + cars_used[sel.selectedIndex-1];
-// 	document.getElementById("car_info").innerHTML = text;
-// }
 </script>
 
 
@@ -166,7 +118,6 @@
 
 <script>
 
-var tablez;
 
 function buildTable(bookings) {
 
@@ -198,13 +149,10 @@ function buildTable(bookings) {
         td.appendChild(document.createTextNode(el[o]))
   
 
+            var getPickUpDate = new Date(booking_info[j].date_from + " " + moment(booking_info[j].time_from, 'h:mm a').format('H:mm')); 
 
 
-
-             var getPickUpDate = new Date(pickup_dates[j] + " " + moment(pickup_times[j], 'h:mm a').format('H:mm')); 
-
-
-            var getDropOffDate = new Date(dropoff_dates[j] + " " + moment(dropoff_times[j], 'h:mm a').format('H:mm')); 
+            var getDropOffDate = new Date(booking_info[j].date_to + " " + moment(booking_info[j].time_to, 'h:mm a').format('H:mm')); 
 
             var pickUpMilli = getPickUpDate.getTime(); 
             var dropOffMilli = getDropOffDate.getTime();
@@ -217,25 +165,17 @@ function buildTable(bookings) {
             var timeUntilPickup = n - pickUpMilli;
 
 
-              var getPickUpDate = moment(pickup_dates[j]).format('dddd, DD MMMM YYYY');
-              var getPickUpTime = moment(pickup_times[j], 'h:mm a').format('H:mm');
+            var getPickUpDate = moment(booking_info[j].date_from).format('dddd, DD MMMM YYYY');
+            var getPickUpTime = moment(booking_info[j].time_from, 'h:mm a').format('H:mm');
 
-              var getDropoffDate = moment(dropoff_dates[j]).format('dddd, DD MMMM YYYY');
-              var getDropoffTime = moment(dropoff_times[j], 'h:mm a').format('H:mm');
-
-              
-
-
-
-
+            var getDropoffDate = moment(booking_info[j].date_to).format('dddd, DD MMMM YYYY');
+            var getDropoffTime = moment(booking_info[j].time_to, 'h:mm a').format('H:mm');         
 
         
         if(o != 'completed') {
 
 
-
           td.addEventListener("click", function() {
-
 
 
 
@@ -244,10 +184,10 @@ function buildTable(bookings) {
     			&markers=size:mid%7Ccolor:red%7C" + parseFloat(lats[j]) + "," + parseFloat(lngs[j]) + "&key=AIzaSyAvsxxIPeWUltcyoYBVnjzIY9xOYDAEiTQ";
 
             	document.getElementById("bookingInfo").innerHTML = 
-            	cars_used[j] + "<br>" + 
-            	rego_numbers[j] + "<br>" + 
-            	locations[j] + "<br>$" +
-            	booking_costs[j] + "<br><br>" +
+            	booking_info[j].car_used + "<br>" + 
+            	booking_info[j].rego_number + "<br>" + 
+            	booking_info[j].car_location + "<br>$" +
+            	booking_info[j].total_cost + "<br><br>" +
             	getPickUpDate + " " + getPickUpTime + " to<br>" +
             	getDropoffDate + " " + getDropoffTime + "<br><br>" +
             	"Total Hours: " + hours.toFixed(2) + "<br>" + "";
@@ -261,20 +201,18 @@ function buildTable(bookings) {
         }
 
 
-
         if(o == 'total_cost') {
            if(timeUntilDrop < 0 && completion_status[j] == false) {
-             overBookingFee = parseFloat(booking_costs[j]) + (parseFloat(costs_per_hour[j]) * (Math.abs(timeUntilDrop) / 36e5) * 3);
+             overBookingFee = parseFloat(booking_costs[j]) + (parseFloat(booking_info[j].cost_per_hour) * (Math.abs(timeUntilDrop) / 36e5) * 3);
              overBookingFee = overBookingFee.toFixed(2);
 
-             td.innerHTML = booking_costs[j] + " + " + (costs_per_hour[j] * (Math.abs(timeUntilDrop) / 36e5)  * 3).toFixed(2);
+             td.innerHTML = booking_costs[j] + " + " + (booking_info[j].cost_per_hour * (Math.abs(timeUntilDrop) / 36e5)  * 3).toFixed(2);
            } else {
               overBookingFee = parseFloat(booking_costs[j]);
               td.innerHTML = parseFloat(booking_costs[j]).toFixed(2);
 
            }
         }
-
 
 
         function addZero(i) {
@@ -327,9 +265,6 @@ function buildTable(bookings) {
 
 
 
-//% 36e5) / 6e4)
-
-
       }
 
 
@@ -340,21 +275,21 @@ function buildTable(bookings) {
 
             var time = new Date().getTime();
             var date = new Date(time);
-            var hourz = date.getHours();
+            var getHours = date.getHours();
             var am;
            
 
-                if (hourz > 12) {
-                    hourz -= 12;
+                if (getHours > 12) {
+                    getHours -= 12;
                     am = " PM";
-                } else if (hourz === 0) {
-                   hourz = 12;
+                } else if (getHours === 0) {
+                   getHours = 12;
                    am = " AM";
                 } else {
                   am = " AM";
                 }
 
-            finalDropOffTime = hourz + ":" + addZero(date.getMinutes()) + am;
+            finalDropOffTime = getHours + ":" + addZero(date.getMinutes()) + am;
             finalDropOffDate = date.getFullYear() + "/" + addZero(date.getMonth() + 1) + "/" + addZero(date.getDate());
 
             
@@ -396,13 +331,6 @@ function buildTable(bookings) {
 
         tr.appendChild(td);
 
-       
-
-
-
-
-
-
 
       }
       
@@ -421,7 +349,6 @@ window.onload=function() {
   
   
 }
-
 
 
 
@@ -453,12 +380,6 @@ $(document).on('click','.get-data' ,function(){
         alert($(value).text());
     })
 });
-
-
-
-
-
-
 
 
 

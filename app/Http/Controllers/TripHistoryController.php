@@ -21,6 +21,13 @@ class TripHistoryController extends Controller
     }
 
 
+    public static function getBookingInformation()
+    {
+        $result = DB::table('car_bookings')->get();
+        $result = $result->toArray();
+        return $result;
+    }
+
     public static function getBookings()
     {
         $user = Auth::user();
@@ -29,29 +36,7 @@ class TripHistoryController extends Controller
         return $result;
     }
 
-    public static function getCarUsed()
-    {
-        $result = DB::table('car_bookings')->pluck('car_used');
-        $result = $result->toArray();
-        return $result;
-    }
-
-    public static function getCarRego()
-    {
-        $result = DB::table('car_bookings')->pluck('rego_number');
-        $result = $result->toArray();
-        return $result;
-    }
-
-
-
-    public static function getCarLocation()
-    {
-        $user = Auth::user();
-        $result = DB::table('car_bookings')->where('user_id', '=', $user->id)->pluck('car_location');
-        $result = $result->toArray();
-        return $result;
-    }
+    
 
     public static function getLat()
     {
@@ -69,37 +54,6 @@ class TripHistoryController extends Controller
         return $result;
     }   
 
-    public static function getPickupDate()
-    {
-        $user = Auth::user();
-        $result = DB::table('car_bookings')->where('user_id', '=', $user->id)->pluck('date_from');
-        $result = $result->toArray();
-        return $result;
-    }
-
-    public static function getPickupTime()
-    {
-        $user = Auth::user();
-        $result = DB::table('car_bookings')->where('user_id', '=', $user->id)->pluck('time_from');
-        $result = $result->toArray();
-        return $result;
-    }
-
-    public static function getDropoffDate()
-    {
-        $user = Auth::user();
-        $result = DB::table('car_bookings')->where('user_id', '=', $user->id)->pluck('date_to');
-        $result = $result->toArray();
-        return $result;
-    }
-
-    public static function getDropoffTime()
-    {
-        $user = Auth::user();
-        $result = DB::table('car_bookings')->where('user_id', '=', $user->id)->pluck('time_to');
-        $result = $result->toArray();
-        return $result;
-    }
 
 
     public static function getBookingCosts()
@@ -110,21 +64,6 @@ class TripHistoryController extends Controller
         return $result;
     }
 
-    public static function getHourCosts()
-    {
-        $user = Auth::user();
-        $result = DB::table('car_bookings')->where('user_id', '=', $user->id)->pluck('cost_per_hour');
-        $result = $result->toArray();
-        return $result;
-    }
-
-     public static function getDayCosts()
-    {
-        $user = Auth::user();
-        $result = DB::table('car_bookings')->where('user_id', '=', $user->id)->pluck('cost_per_day');
-        $result = $result->toArray();
-        return $result;
-    }
 
     public static function getCompletion()
     {
